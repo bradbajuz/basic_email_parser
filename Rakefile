@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-EmailParser::Application.load_tasks
+BasicEmailParser::Application.load_tasks

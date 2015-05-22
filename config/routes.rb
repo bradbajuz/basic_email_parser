@@ -1,4 +1,4 @@
-EmailParser::Application.routes.draw do
+BasicEmailParser::Application.routes.draw do
 
   resources :raw_emails
 
