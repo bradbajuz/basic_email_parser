@@ -1,0 +1,17 @@
+<h1>Raw Email Parser</h1>
+
+<p><%= link_to "New", new_raw_email_path, class: 'btn btn-success' %></p>
+
+<hr />
+
+<div class="row" "pull-right">
+  <div class="col-md-8">
+    <% @raw_emails.each do |raw| %>
+      <h2>Raw Email #<%= raw.id %></h2>
+      <%= link_to "Show", raw, class: 'btn btn-info' %>
+      <%= link_to "Edit", edit_raw_email_path(raw) , class: 'btn btn-warning' %>
+      <%= link_to "Delete", raw, class: 'btn btn-danger', confirm: 'Are you sure?', method: :delete %>
+    <% end %>
+  </div>
+</div>
+
