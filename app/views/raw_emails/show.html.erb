@@ -17,51 +17,11 @@
   <h1>Parsed E-Mail</h1>
   <div class="table-responsive">
     <table class="table table-striped table-condensed">
+      <% @raw_email.parse_headers.each do |raw| %> 
       <tr>
-        <th><%= @raw_email.parse_message_id %></th>
+        <th><%= raw[0] %></th>
       </tr>
-      <tr>
-        <th><%= @raw_email.parse_date %></th>
-      </tr>
-      <tr>
-        <th><%= @raw_email.parse_to %></th>
-      </tr>
-      <tr>
-        <th><%= @raw_email.parse_authentication_results %></th>
-      </tr>
-      <tr>
-        <th><%= @raw_email.parse_from %></th>
-      </tr>
-      <tr>
-        <th><%= @raw_email.parse_return_path %></th>
-      </tr>
-      <tr>
-        <th><%= @raw_email.parse_content_type %></th>
-      </tr>
-      <tr>
-        <th><%= @raw_email.parse_content_transfer_encoding %></th>
-      </tr>
-      <tr>
-        <th><%= @raw_email.parse_mime_version %></th>
-      </tr>
-      <tr>
-        <th><%= @raw_email.parse_dkim_signature %></th>
-      </tr>
-      <tr>
-        <th><%= @raw_email.parse_references %></th>
-      </tr>
-      <tr>
-        <th><%= @raw_email.parse_subject %></th>
-      </tr>
-      <tr>
-        <th><%= @raw_email.parse_received_from %></th>
-      </tr>
-      <tr>
-        <th><%= @raw_email.parse_received_by %></th>
-      </tr>
-      <tr>
-        <th><%= @raw_email.parse_received_spf %></th>
-      </tr>
+      <% end %>
     </table>
   </div>
   

@@ -23,67 +23,27 @@ class RawEmail < ActiveRecord::Base
     @text = raw_email.to_s
   end
 
-  def parse_message_id
-    message_id = @text.match(MESSAGE_ID)
+  def parse_headers
+    a = []
+    a << message_id = @text.match(MESSAGE_ID)
+    a << date = @text.match(DATE)
+    a << to = @text.match(TO)
+    a << user_agent = @text.match(AUTHENTICATION_RESULTS)
+    a << from = @text.match(FROM)
+    a << return_path = @text.match(RETURN_PATH)
+    a << content_type = @text.match(CONTENT_TYPE)
+    a << content_transfer_encoding = @text.match(CONTENT_TRANSFER_ENCODING)
+    a << mime_version = @text.match(MIME_VERSION)
+    a << parse_dkim_signature = @text.match(DKIM_SIGNATURE)
+    a << parse_references = @text.match(REFERENCES)
+    a << subject = @text.split('\r').to_s.match(SUBJECT)
+    a << parse_received_from = @text.match(RECEIVED_FROM)
+    a << parse_received_by = @text.match(RECEIVED_BY)
+    a << parse_received_spf = @text.match(RECEIVED_SPF)
+    a.compact
   end 
 
-  def parse_date
-    date = @text.match(DATE)
-  end
-
-  def parse_to
-    to = @text.match(TO)
-  end
-
-  def parse_authentication_results
-    user_agent = @text.match(AUTHENTICATION_RESULTS)
-  end
-
-  def parse_from
-    from = @text.match(FROM)
-  end
-
-  def parse_return_path
-    return_path = @text.match(RETURN_PATH)
-  end
-
-  def parse_content_type
-    @content_type = @text.match(CONTENT_TYPE)
-  end
-
-  def parse_content_transfer_encoding
-    content_transfer_encoding = @text.match(CONTENT_TRANSFER_ENCODING)
-  end
-
-  def parse_mime_version
-    mime_version = @text.match(MIME_VERSION)
-  end
-
-  def parse_dkim_signature
-    parse_dkim_signature = @text.match(DKIM_SIGNATURE)
-  end
-
-  def parse_references
-    parse_references = @text.match(REFERENCES)
-  end
-
-  def parse_subject
-    subject = @text.split('\r').to_s.match(SUBJECT)
-  end
-
-  def parse_received_from
-    parse_received_from = @text.match(RECEIVED_FROM)
-  end
-
-  def parse_received_by
-    parse_received_by = @text.match(RECEIVED_BY)
-  end
-
-  def parse_received_spf
-    parse_received_spf = @text.match(RECEIVED_SPF)
-  end
-
   def parse_body
-     @parse_body = @text.match(BODY)
+    @parse_body = @text.match(BODY)
   end
 end
