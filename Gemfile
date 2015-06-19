@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.2.2'
 
-gem 'rails', '4.2.1'
+gem 'rails', '4.2.2'
 gem 'pg'
 
 gem 'bootstrap-sass', '~> 3.3.4.1'
@@ -18,7 +18,7 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'byebug'
-  gem 'web-console', '~> 2.1.2'
+  gem 'web-console', '~> 2.1.3'
 end
 
 group :doc do
